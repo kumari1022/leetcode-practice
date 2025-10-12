@@ -5,9 +5,11 @@ class Solution{
         return dfs(s,0,k,dp);
     }
     private int dfs(String s,int i,int k,Integer[][] dp){
-        if(k<0)return 101;
+        if(k<0)
+           return 101;
         if(i>=s.length()||s.length()-i<=k)return 0;
-        if(dp[i][k]!=null)return dp[i][k];
+        if(dp[i][k]!=null)
+            return dp[i][k];
         int res=dfs(s,i+1,k-1,dp);
         int same=0,diff=0;
         for(int j=i;j<s.length()&&diff<=k;j++){
