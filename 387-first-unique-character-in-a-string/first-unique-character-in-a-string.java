@@ -1,12 +1,16 @@
 class Solution {
-    public int firstUniqChar(String s)
-     {
-        java.util.HashMap<Character,Integer> map = new java.util.HashMap<>();
-        for(char c : s.toCharArray())
-             map.put(c, map.getOrDefault(c, 0) + 1);
-        for(int i = 0; i < s.length(); i++) 
-        if(map.get(s.charAt(i)) == 1) 
-           return i;
+    public int firstUniqChar(String s) {
+        LinkedHashMap<Character,Integer> hs=new LinkedHashMap<>();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            hs.put(c,hs.getOrDefault(c,0)+1);
+        }
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(hs.get(ch)==1){
+                return i;
+            }
+        }
         return -1;
     }
 }
