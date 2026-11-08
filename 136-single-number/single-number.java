@@ -1,20 +1,15 @@
 class Solution {
-    public int singleNumber(int[] arr) {
-        LinkedHashMap<Integer,Integer> hm = new LinkedHashMap<>();
-        for(int i=0;i<arr.length;i++){
-            if(!hm.containsKey(arr[i]))
-                hm.put(arr[i],1);
-            else
-                hm.put(arr[i],hm.get(arr[i])+1);
+    public int singleNumber(int[] nums) {
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            hs.put(nums[i],hs.getOrDefault(nums[i],0)+1);
         }
-        Set<Integer> st = hm.keySet();
-        int res = 0;
-        for(Integer i : st){
-            if(hm.get(i)==1){
-                res=i;
-                break;
+        for(int key:nums){
+            if(hs.get(key)==1){
+                return key;
             }
         }
-        return res;
+        return -1;
+
     }
 }
